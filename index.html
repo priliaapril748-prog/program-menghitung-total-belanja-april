@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Program Menghitung Total Belanja</title>
+
+    <!-- ================================= -->
+    <!-- Nama Pembuat: Aprilia Ramadhani -->
+    <!-- Program Menghitung Total Belanja -->
+    <!-- Bahasa: HTML, CSS, JavaScript     -->
+    <!-- ================================= -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f0fe;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px #b8c5d9;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2457a7;
+            font-size: 25px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px 4px;
+            border: none;
+            border-radius: 7px;
+            background-color: #2457a7;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #173d78;
+        }
+
+        .hasil {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f0fe;
+            border-radius: 10px;
+        }
+
+        .hasil h2 {
+            color: #2457a7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>PROGRAM KASIR</h1>
+        <p>Menghitung Total Belanja</p>
+
+        <hr>
+
+        <input
+            type="number"
+            id="harga"
+            placeholder="Masukkan harga barang"
+            min="0"
+        >
+
+        <input
+            type="number"
+            id="jumlah"
+            placeholder="Masukkan jumlah barang"
+            min="1"
+        >
+
+        <br>
+
+        <button onclick="hitungTotal()">
+            Hitung Total
+        </button>
+
+        <button onclick="resetData()">
+            Reset
+        </button>
+
+        <div class="hasil">
+            <p>Total Belanja:</p>
+            <h2 id="total">Rp0</h2>
+        </div>
+
+        <hr>
+
+        <p>
+            Nama Pembuat:
+            <b>Aprilia Ramadhani</b>
+        </p>
+
+    </div>
+
+    <script>
+
+        // Fungsi Menghitung Total Belanja
+
+        function hitungTotal() {
+
+            let harga = Number(
+                document.getElementById("harga").value
+            );
+
+            let jumlah = Number(
+                document.getElementById("jumlah").value
+            );
+
+            if (
+                document.getElementById("harga").value === "" ||
+                document.getElementById("jumlah").value === "" ||
+                harga < 0 ||
+                jumlah < 1 ||
+                !Number.isInteger(jumlah)
+            ) {
+                alert("Masukkan harga dan jumlah barang dengan benar!");
+                return;
+            }
+
+            let total = harga * jumlah;
+
+            document.getElementById("total").innerHTML =
+                "Rp" + total.toLocaleString("id-ID");
+
+        }
+
+        // Fungsi Reset Data
+
+        function resetData() {
+
+            document.getElementById("harga").value = "";
+            document.getElementById("jumlah").value = "";
+            document.getElementById("total").innerHTML = "Rp0";
+
+        }
+
+    </script>
+
+</body>
+</html>
